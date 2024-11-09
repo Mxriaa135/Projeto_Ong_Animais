@@ -1,0 +1,26 @@
+html {
+    scroll-behavior: smooth;
+}
+* {
+    overflow-x: hidden;
+}
+body{
+    background-color: #00ABBD;
+    margin:0;
+}
+nav{
+    background-color: #026E81;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    font-family: "Julius Sans One", sans-serif;
+}
+#meio ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    align-items: center;
+    padding: 18px;
+    margin: 0;
+}
