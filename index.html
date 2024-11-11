@@ -8,23 +8,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <script>
+        fetch("nav.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("nav-placeholder").innerHTML = data;
+
+            });
+    </script>
 </head>
-    <header>
-        <nav>
-            <ul>
-                <ul id="meio">
-                <li><a href="">ANIMAIS</a></li>
-                <li><a href="">DOAR</a></li>
-                <li><a href="">PLANO</a></li>
-                <li><a href="">VOLUNTÁRIOS</a></li>
-                </ul>
-                <ul id="canto-direito">
-                    <li><a href="">LOGIN</a></li>
-                </ul>
-            </ul>
-        </nav>
-    </header>
 <body>
-    
+    <header>
+        <div id="nav-placeholder"></div>
+    </header>
+    <main>
+        <div id="div1"><h2>SOBRE NÓS</h2>
+            <p>Somos uma ONG dedicada ao resgate, 
+                cuidado e adoção de animais em situação de vulnerabilidade.
+                Nossa missão é oferecer abrigo, cuidados veterinários e muito 
+                amor para animais que foram abandonados, maltratados ou que necessitam de um novo lar.
+                Trabalhamos incansavelmente para transformar a vida desses animais, preparando-os para a 
+                adoção responsável e para encontrar famílias que possam proporcionar um ambiente seguro e acolhedor.
+                <br><br>
+                Além do resgate e da adoção, promovemos campanhas de conscientização sobre a importância da proteção animal 
+                e incentivamos a participação da comunidade por meio de voluntariado e doações. Com a sua ajuda, podemos 
+                continuar salvando vidas e fazendo a diferença. Junte-se a nós nessa missão de amor e cuidado aos animais!</p>
+            </div>
+        <div id="div2"><img src="/img/img_inicio.jpg"></div> 
+    </main>
+    <section>
+
+    </section>
 </body>
 </html>
