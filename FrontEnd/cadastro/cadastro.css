@@ -1,0 +1,61 @@
+html {
+    scroll-behavior: smooth;
+  }
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #fffcd6;
+    background-image: url('/img/logo.png');
+    margin: 0;
+    background-size: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+* {
+    overflow-x: hidden;
+}
+form{
+    border: solid 2px #021F59;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: transparent;
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 90px 1fr; 
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: inset 0px 0px 50px -8px #021F59;
+
+}
+input, button {
+    margin: 5px;
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 10px;
+    border: none;
+    border: 1px solid #2A8C1B;
+    background: transparent;
+    color: #FFF;
+}
+
+form label{
+    margin-top: 25px;
+    margin-left: 10px;
+    text-align: left;
+    padding-right:50px;
+}
+
+form input{
+    padding: 8px;
+    margin: 6px;
+    width: 90%;
+    margin-left: 5%;
+    
+    box-shadow: inset 0px 0px 39px -18px #2A8C1B;
+}

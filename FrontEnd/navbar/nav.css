@@ -1,0 +1,33 @@
+nav{
+    background-color: #021F59;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    align-items: center;
+    margin: 0;
+    padding: 10px;
+}
+nav a{
+    color: white;
+    text-decoration: none;
+    font-family: "Julius Sans One", sans-serif;
+    font-size: 18px;
+}
+nav li{
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 10px;
+}
+nav img{
+    width: 80px;
+    height: 70px;
+    margin-left: 20px;
+    margin-right: 100px;
+}
+#middle-nav{
+    display: flex;
+ }
+ #right-nav{
+     display: flex;
+     margin-left: auto;
+ }
