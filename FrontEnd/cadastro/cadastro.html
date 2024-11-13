@@ -6,7 +6,7 @@
     <title>Cadastrar</title>
     <link rel="stylesheet" href="cadastro.css">
     <script>
-        fetch("nav.html")
+        fetch("/navbar/nav.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("nav-placeholder").innerHTML = data;
