@@ -6,7 +6,7 @@
     <title>Cadastrar</title>
     <link rel="stylesheet" href="cadastro.css">
     <script>
-        fetch("/navbar/nav.html")
+        fetch("../navbar/nav.html")
             .then(response => response.text())
             .then(data => {
                 document.getElementById("nav-placeholder").innerHTML = data;
@@ -32,14 +32,14 @@
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" name="telefone">
             
-        <label for="dataNascimento">Data de Nascimento:</label>
+        <label for="dataNascimento">Data De Nascimento:</label>
         <input type="date" id="dataNascimento" name="dataNascimento">
 
         <label for="email">E-mail:</label>
         <input type="email" id="email" name="email" required>
 
         <label for="senha">Senha:</label>
-        <input type="text" id="senha" name="senha" required>
+        <input type="password" id="senha" name="senha" required>
 
         <button>Cadastrar</button>
     </form>
