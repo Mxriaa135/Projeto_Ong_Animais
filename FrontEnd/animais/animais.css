@@ -1,0 +1,46 @@
+html {
+    scroll-behavior: smooth;
+}
+* {
+    overflow-x: hidden;
+}
+body{
+    background-color: #fffcd6;
+    margin:0;
+}
+main h2{
+    display: flex;
+    justify-content: center;
+    font-family: "Julius Sans One", sans-serif;
+    margin: 30px;
+}
+ul{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: space-around;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+#caes img {
+    border: solid 2px black;
+    margin: 10px;
+    width: 300px;
+    height: 200px;
+}
+#caes li{
+    border: solid 2px black;
+    border-radius: 8px;
+    width: 323px;
+    display: grid;
+}
+#caes h2{
+    display: flex;
+    justify-content: center;
+}
+#caes p{
+    font-family: "Julius Sans One", sans-serif;
+    margin: 20px;
+    text-align: justify;
+    display: flex;
+    justify-content: center;
+}
