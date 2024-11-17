@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animais</title>
+    <link rel="stylesheet" href="animais.css">
+    <script>
+        fetch("../navbar/nav.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("nav-placeholder").innerHTML = data;
+            });
+    </script>
+</head>
+<header>
+    <div id="nav-placeholder"></div>
+</header>
+<body>
+    <main>
+        <h2>CÃES</h2>
+    <ul id="caes">
+        <li>
+            <img src="../img/img_inicio.jpg">
+            <h2>Teste</h2>
+            <p>kasdjhasjdksdhhsdsddsdckhdjscsd csdjcnsdjkdkjhd sdkjhjkdshihdiw jkbdksjbdjdsf</p>
+        </li>
+        <li>
+            <img src="">
+            <h3></h3>
+            <p></p>
+        </li>
+    </ul>
+    <h2>GATOS</h2>
+    <ul id="caes">
+
+    </ul>
+    </main>
+</body>
+</html>
