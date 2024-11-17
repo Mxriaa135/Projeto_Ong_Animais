@@ -4,9 +4,9 @@ CREATE TABLE Animal(
     id_animal INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(15) NOT NULL,
     idade INT CHECK(idade>2 AND idade<=240),
-    sexo CHAR(1) NOT NULL CHECK(sexo="F" OR sexo="M" OR sexo="I"),
+    sexo CHAR(1) NOT NULL CHECK(sexo="F" OR sexo="M"),
     peso FLOAT NOT NULL,
-    especie VARCHAR(8) NOT NULL CHECK(especie="CACHORRO" OR especie="GATO"),
+    especie VARCHAR(8) NOT NULL CHECK(especie="cachorro" OR especie="gato"),
     descricao VARCHAR(100) NULL,
     deficiencia VARCHAR(15) NULL DEFAULT 'Nenhuma',
     doenca VARCHAR(15) NULL DEFAULT 'Nenhuma',
@@ -40,7 +40,7 @@ CREATE TABLE usuario_tipo(
 
 CREATE TABLE Adocao (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	status_adocao CHAR(1) NOT NULL CHECK(status_adocao='P' OR status_adocao='A' OR status_adocao='R'),
+	status_adocao CHAR(1) NULL CHECK(status_adocao='P' OR status_adocao='A' OR status_adocao='R') DEFAULT 'P',
 	observação VARCHAR (100) NULL,
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_adocao DATE NULL,
@@ -54,7 +54,7 @@ CREATE TABLE  Doacao_Item (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome_item VARCHAR (20),
 	foto VARCHAR(225) NOT NULL,
-	status_doacao CHAR(1) NOT NULL CHECK(status_adocao='P' OR status_adocao='A' OR status_adocao='R'), 
+	status_doacao CHAR(1) NULL CHECK(status_adocao='P' OR status_adocao='A' OR status_adocao='R')  DEFAULT 'P', 
 	observacao VARCHAR(100) NULL,
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_doacao DATE NULL,
@@ -65,7 +65,7 @@ CREATE TABLE  Doacao_Item (
 CREATE TABLE Metodo_pagamento (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	descricao VARCHAR(25) NOT NULL UNIQUE CHECK(descricao='PIX' OR
-    descricao='CARTÃO DE CRÉDITO' OR descricao='CARTÃO DE DÉBITO' OR descricao='BOLETO BANCÁRIO')
+    descricao='Cartão de Crédito' OR descricao='Cartão de Débito' OR descricao='Boleto bancário')
 );
 
 CREATE TABLE Contribuicao_financeira(
