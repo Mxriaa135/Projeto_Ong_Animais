@@ -11,7 +11,7 @@ CREATE TABLE Animal(
     deficiencia VARCHAR(15) NULL DEFAULT 'Nenhuma',
     doenca VARCHAR(15) NULL DEFAULT 'Nenhuma',
     data_registro DATE DEFAULT (CURDATE()),
-    status_registro SMALLINT DEFAULT 1
+    ativo SMALLINT DEFAULT 1
 );
 
 CREATE TABLE Usuario (
@@ -24,7 +24,7 @@ CREATE TABLE Usuario (
 	data_nascimento DATE NOT NULL,
 	telefone CHAR(11) NOT NULL,
 	data_registro DATE DEFAULT (CURDATE()),
-    status_registro SMALLINT DEFAULT 1
+    ativo SMALLINT DEFAULT 1
 );
 
 CREATE TABLE tipo_usuario (
@@ -35,7 +35,7 @@ CREATE TABLE tipo_usuario (
 
 CREATE TABLE usuario_tipo(
 	id_TipoUsuario INT,
-	CPF_usuario CHAR(11) NOT NULL UNIQUE,
+	CPF_usuario CHAR(11) NOT NULL,
 	FOREIGN KEY(id_TipoUsuario) REFERENCES tipo_usuario (id),
 	FOREIGN KEY (CPF_Usuario) REFERENCES Usuario (CPF)
 );
@@ -48,15 +48,15 @@ CREATE TABLE Adocao (
 	data_adocao DATE NULL,
 	id_animal INT,
 	CPF_Usuario CHAR(11) NOT NULL UNIQUE,
-	FOREIGN KEY (id_animal) REFERENCES Animal (id),
+	FOREIGN KEY (id_animal) REFERENCES Animal (id_animal),
 	FOREIGN KEY (CPF_Usuario)REFERENCES Usuario (CPF)
 );
 
 CREATE TABLE  Doacao_Item (
 	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome_item VARCHAR (20),
+	nome_item VARCHAR (30),
 	foto VARCHAR(225) NOT NULL,
-	status_doacao CHAR(1) NULL CHECK(status_adocao='P' OR status_adocao='A' OR status_adocao='R')  DEFAULT 'P', 
+	status_doacao CHAR(1) NULL CHECK(status_doacao='P' OR status_doacao='A' OR status_doacao='R')  DEFAULT 'P', 
 	observacao VARCHAR(100) NULL,
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_doacao DATE NULL,
@@ -89,5 +89,5 @@ CREATE TABLE Contribuicao_recorrente(
 	CPF_usuario CHAR(11) NOT NULL UNIQUE,
 	id_metodoPagamento INT NOT NULL,
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario(CPF),
-	FOREIGN KEY (id_metodoPagamento) REFERENCES Metodo_pagamento
+	FOREIGN KEY (id_metodoPagamento) REFERENCES Metodo_pagamento(id)
 );
