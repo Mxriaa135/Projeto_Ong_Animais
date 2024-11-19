@@ -10,7 +10,8 @@ CREATE TABLE Animal(
     descricao VARCHAR(100) NULL,
     deficiencia VARCHAR(15) NULL DEFAULT 'Nenhuma',
     doenca VARCHAR(15) NULL DEFAULT 'Nenhuma',
-    data_registro DATE DEFAULT (CURDATE())
+    data_registro DATE DEFAULT (CURDATE()),
+    status_registro SMALLINT DEFAULT 1
 );
 
 CREATE TABLE Usuario (
@@ -22,7 +23,8 @@ CREATE TABLE Usuario (
 	sexo CHAR (1) NOT NULL CHECK(sexo="F" OR sexo="M" OR sexo="I"),
 	data_nascimento DATE NOT NULL,
 	telefone CHAR(11) NOT NULL,
-	data_registro DATE DEFAULT (CURDATE())
+	data_registro DATE DEFAULT (CURDATE()),
+    status_registro SMALLINT DEFAULT 1
 );
 
 CREATE TABLE tipo_usuario (
