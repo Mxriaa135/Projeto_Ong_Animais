@@ -1,7 +1,7 @@
 USE ong_database;
 
 -- Funções da tabela Usuario
-#Função de Inserir dados:
+#Função de Inserir dados da tabela Usuario
 DELIMITER //
 CREATE PROCEDURE inserirUsuarios(
 	IN p_CPF CHAR(11),
@@ -19,23 +19,19 @@ BEGIN
 
 END //
 
-#Função update
-CREATE PROCEDURE updateUsuarios(
+#Função update da tabela Usuario
+CREATE PROCEDURE desativarUsuarios(
 	IN p_CPF CHAR(11)
 )
 BEGIN
-
-
-
+	UPDATE Usuario SET status_registro = 0 WHERE p_CPF = CPF;
 END//
 
-
-CREATE PROCEDURE excluirUsuarios(
+#Função delete da tabela Usuario
+CREATE PROCEDURE excluirUsuario(
 	IN p_CPF CHAR(11)
 )
 BEGIN
-	
-	UPDATE Usuario 
-
+	DELETE FROM Usuario WHERE p_CPF = CPF;
 END//
 DELIMITER ;
