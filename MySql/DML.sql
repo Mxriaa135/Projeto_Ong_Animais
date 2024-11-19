@@ -45,3 +45,4 @@ INSERT INTO Contribuicao_financeira (valor, CPF_usuario, id_metodoPagamento) VAL
 INSERT INTO Contribuicao_recorrente (valor_fixo, frequencia, CPF_usuario, id_metodoPagamento) VALUES
 ('30.00', 'Mensalmente', '52541088846', 2),
 ('20.00', 'Trimestral', '83274873465', 2);
+
