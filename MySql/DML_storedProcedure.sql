@@ -35,3 +35,43 @@ BEGIN
 	DELETE FROM Usuario WHERE p_CPF = CPF;
 END//
 DELIMITER ;
+
+-- Funções da tabela Animais
+# Função para Inserir dados na tabela Animal
+DELIMITER //
+CREATE PROCEDURE InserirAnimal (
+    IN p_nome VARCHAR(15),
+    IN p_idade INT ,
+    IN p_sexo CHAR(1),
+    IN p_peso FLOAT,
+    IN p_especie VARCHAR(8),
+    IN p_descricao VARCHAR(100),
+    IN p_deficiencia VARCHAR(15),
+    IN p_doenca VARCHAR(15))
+    
+    BEGIN
+    
+    INSERT INTO Animal ( nome, idade, sexo, peso, especie, descricao, deficiencia, doenca
+    ) VALUES (p_nome, p_idade, p_sexo, p_peso, p_especie, p_descricao, p_deficiencia, p_doenca);
+    END//
+    
+    # Função update da tabela Animal
+    CREATE PROCEDURE AtualizarAnimal (
+    IN p_id INT,
+    IN p_novo_nome VARCHAR (15)
+    )
+    BEGIN
+    UPDATE Animal
+    SET nome = p_novo_nome
+    WHERE id = p_id;
+    END//
+    
+    #Função delete da tabela Animal
+    CREATE PROCEDURE DeleterAnimal (
+    IN p_id INT)
+    BEGIN 
+    DELETE FROM Animal WHERE p_id = id;
+    END//
+    DELIMITER ;
+    
+    
