@@ -8,8 +8,8 @@ CREATE TABLE Animal(
     peso FLOAT NOT NULL,
     especie VARCHAR(8) NOT NULL CHECK(especie="cachorro" OR especie="gato"),
     descricao VARCHAR(100) NULL,
-    deficiencia VARCHAR(15) NULL DEFAULT 'Nenhuma',
-    doenca VARCHAR(15) NULL DEFAULT 'Nenhuma',
+    deficiencia VARCHAR(40) NULL DEFAULT 'Nenhuma',
+    doenca VARCHAR(20) NULL DEFAULT 'Nenhuma',
     data_registro DATE DEFAULT (CURDATE()),
     ativo SMALLINT DEFAULT 1
 );
@@ -47,7 +47,7 @@ CREATE TABLE Adocao (
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_adocao DATE NULL,
 	id_animal INT,
-	CPF_Usuario CHAR(11) NOT NULL UNIQUE,
+	CPF_Usuario CHAR(11) NOT NULL,
 	FOREIGN KEY (id_animal) REFERENCES Animal (id_animal),
 	FOREIGN KEY (CPF_Usuario)REFERENCES Usuario (CPF)
 );
@@ -60,7 +60,7 @@ CREATE TABLE  Doacao_Item (
 	observacao VARCHAR(100) NULL,
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_doacao DATE NULL,
-	CPF_usuario CHAR(11) NOT NULL UNIQUE,
+	CPF_usuario CHAR(11) NOT NULL,
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario (CPF)
 );
 
@@ -75,7 +75,7 @@ CREATE TABLE Contribuicao_financeira(
 	valor FLOAT NOT NULL CHECK(valor>0),
 	observacao VARCHAR(100) NULL,
 	data_contribuicao DATE DEFAULT (CURDATE()),
-	CPF_usuario CHAR(11) NOT NULL UNIQUE,
+	CPF_usuario CHAR(11) NOT NULL,
 	id_metodoPagamento INT NOT NULL,
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario(CPF),
 	FOREIGN KEY (id_metodoPagamento) REFERENCES Metodo_pagamento (id)
@@ -86,7 +86,7 @@ CREATE TABLE Contribuicao_recorrente(
 	valor_fixo FLOAT NOT NULL CHECK(valor_fixo>0),
 	data_cobranca DATE DEFAULT (CURDATE()),
 	frequencia VARCHAR(20) NOT NULL,
-	CPF_usuario CHAR(11) NOT NULL UNIQUE,
+	CPF_usuario CHAR(11) NOT NULL,
 	id_metodoPagamento INT NOT NULL,
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario(CPF),
 	FOREIGN KEY (id_metodoPagamento) REFERENCES Metodo_pagamento(id)
