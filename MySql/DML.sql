@@ -21,6 +21,7 @@ INSERT INTO usuario(CPF, nome, sobrenome, email, senha, sexo, data_nascimento, t
 
 INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES 
 ('1', '52541088846'),
+('1', '48783632105'),
 ('5', '83274873465'),
 ('3', '88728982984'),
 ('6', '88728982984'),
