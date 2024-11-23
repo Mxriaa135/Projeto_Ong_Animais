@@ -75,3 +75,47 @@ CREATE PROCEDURE InserirAnimal (
     DELIMITER ;
     
     
+    -- Funções da tabela Adocao
+# Função para Inserir dados na tabela Adocao
+DELIMITER //
+
+CREATE PROCEDURE InserirAdocao(
+    IN p_status CHAR(1),
+    IN p_observacao VARCHAR(100),
+    IN p_id_animal INT,
+    IN p_CPF_usuario CHAR(11)
+)
+BEGIN
+    INSERT INTO Adocao (status_adocao, observação, id_animal, CPF_Usuario)
+    VALUES (p_status, p_observacao, p_id_animal, p_CPF_usuario);
+END //
+
+	# Função update da tabela Adocao
+	CREATE PROCEDURE AtualizarAdocao(
+    IN p_id INT,
+    IN p_status CHAR(1),
+    IN p_observacao VARCHAR(100),
+    IN p_data_adocao DATE
+	)
+	BEGIN
+    UPDATE Adocao
+    SET status_adocao = p_status, observação = p_observacao, data_adocao = p_data_adocao
+    WHERE id = p_id;
+END //
+
+
+	#Função delete da tabela Usuario
+	CREATE PROCEDURE ExcluirAdocao(
+    IN p_id INT
+	)
+    BEGIN
+    DELETE FROM Adocao WHERE id = p_id;
+END //
+DELIMITER ;
+
+
+
+
+
+    
+    
