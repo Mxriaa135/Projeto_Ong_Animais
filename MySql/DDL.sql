@@ -37,7 +37,8 @@ CREATE TABLE usuario_tipo(
 	id_TipoUsuario INT,
 	CPF_usuario CHAR(11) NOT NULL,
 	FOREIGN KEY(id_TipoUsuario) REFERENCES tipo_usuario (id),
-	FOREIGN KEY (CPF_Usuario) REFERENCES Usuario (CPF)
+	FOREIGN KEY (CPF_Usuario) REFERENCES Usuario (CPF),
+	UNIQUE(id_TipoUsuario, CPF_usuario)
 );
 
 CREATE TABLE Adocao (
