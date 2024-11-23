@@ -2,7 +2,7 @@ USE ong_database;
 
 -- View criada por Maria
 CREATE VIEW adocao_dados_completos AS
-SELECT ad.status_adocao, ad.data_solicitacao, CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario, u.telefone, an.nome AS Nome_animal, an.especie
+SELECT ad.status_adocao, ad.data_solicitacao, CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario, u.telefone, u.email, an.nome AS Nome_animal, an.especie
 FROM adocao AS ad
 JOIN usuario AS u ON ad.CPF_usuario = u.CPF
 JOIN animal AS an ON ad.id_animal = an.id_animal;
@@ -27,4 +27,18 @@ FROM Adocao A
 JOIN Animal An ON A.id_animal = An.id_animal
 JOIN Usuario U ON A.CPF_Usuario = U.CPF;
 
- 
+-- View criada por Maria Ferreira
+CREATE VIEW View_Contribuicoes AS
+SELECT 
+    CF.id,
+    U.Nome AS Nome_Usuario,
+    U.Email,
+    CF.Valor,
+    CF.Data_Contribuicao,
+    CF.id_metodoPagamento
+FROM 
+    Contribuicao_financeira AS CF
+JOIN 
+    Usuario AS U 
+ON 
+	CF.CPF_usuario = U.CPF;
