@@ -75,19 +75,18 @@ CREATE PROCEDURE InserirAnimal (
     DELIMITER ;
     
     
-    -- Funções da tabela Adocao
+-- Funções da tabela Adocao
 # Função para Inserir dados na tabela Adocao
 DELIMITER //
 
 CREATE PROCEDURE InserirAdocao(
-    IN p_status CHAR(1),
     IN p_observacao VARCHAR(100),
     IN p_id_animal INT,
     IN p_CPF_usuario CHAR(11)
 )
 BEGIN
-    INSERT INTO Adocao (status_adocao, observação, id_animal, CPF_Usuario)
-    VALUES (p_status, p_observacao, p_id_animal, p_CPF_usuario);
+    INSERT INTO Adocao (observação, id_animal, CPF_Usuario)
+    VALUES (p_observacao, p_id_animal, p_CPF_usuario);
 END //
 
 	# Função update da tabela Adocao
@@ -111,6 +110,43 @@ END //
     BEGIN
     DELETE FROM Adocao WHERE id = p_id;
 END //
+DELIMITER ;
+
+
+-- Funções da tabela Contibuicao_financeira
+# Função para Inclusão de Contribuições
+
+DELIMITER //
+
+CREATE PROCEDURE inserirContribuicao (
+    IN p_Valor DECIMAL(10, 2),
+    IN p_CPF_usuario CHAR(11),
+    IN p_id_metodoPagamento INT
+)
+BEGIN
+    INSERT INTO Contribuicao_Financeira (Valor, CPF_Usuario, id_metodoPagamento)
+    VALUES (p_Valor, p_CPF_usuario, p_id_metodoPagamento);
+END //
+
+#Função para Atualização de Contribuições
+
+CREATE PROCEDURE atualizarContribuicao (
+    IN p_id INT,
+    IN p_valor FLOAT
+)
+BEGIN
+    UPDATE Contribuicao_financeira SET valor = p_Valor WHERE id = p_id;
+END //
+
+# Função para Exclusão de Contribuições
+
+CREATE PROCEDURE excluirContribuicao (
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM Contribuicao_financeira WHERE id = p_id;
+END //
+
 DELIMITER ;
 
 
