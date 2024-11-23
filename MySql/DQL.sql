@@ -20,3 +20,11 @@ WHERE  CR.valor_fixo = valor_recorrente and CF.valor = valor_contribuicao_unica 
  and date (data_cobranca) between '2024-11-01' and '2024-11-30'
  from usuario); 
  
+ -- View criada por Cristane
+ CREATE VIEW View_Adocao AS
+SELECT  A.id AS id_adocao, A.status_adocao, A.data_solicitacao, A.data_adocao, An.nome AS nome_animal, An.especie AS especie_animal, U.nome AS nome_usuario, U.email AS email_usuario
+FROM Adocao A
+JOIN Animal An ON A.id_animal = An.id_animal
+JOIN Usuario U ON A.CPF_Usuario = U.CPF;
+
+ 
