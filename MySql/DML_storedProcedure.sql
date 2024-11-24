@@ -150,6 +150,49 @@ END //
 DELIMITER ;
 
 
+-- Funções da tabela Doacao_item
+
+DELIMITER //
+
+CREATE PROCEDURE AtualizarDoacaoItem(
+    IN p_id_doacao INT,
+    IN p_id_item INT,
+    IN p_id_doador INT,
+    IN p_data_doacao DATE,
+    IN p_descricao VARCHAR(255)
+)
+BEGIN
+    UPDATE Doacao_Item
+    SET
+        id_item = p_id_item,
+        id_doador = p_id_doador,
+        data_doacao = p_data_doacao,
+        descricao = p_descricao
+    WHERE id = p_id_doacao;
+END //
+
+CREATE PROCEDURE InserirDoacaoItem(
+    IN p_nome_item VARCHAR(30),
+    IN p_foto VARCHAR(225),
+    IN p_status_doacao CHAR(1),
+    IN p_observacao VARCHAR(100),
+    IN p_data_solicitacao DATE,
+    IN p_CPF_usuario CHAR(11)
+)
+BEGIN
+    INSERT INTO Doacao_Item (nome_item, foto, status_doacao, observacao, data_solicitacao, CPF_usuario)
+    VALUES (p_nome_item, p_foto, p_status_doacao, p_observacao, p_data_solicitacao, p_CPF_usuario);
+END //
+
+CREATE PROCEDURE DeletarDoacaoItem(
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM Doacao_Item WHERE id = p_id;
+END //
+
+DELIMITER ;
+
 
 
 
