@@ -42,3 +42,22 @@ JOIN
     Usuario AS U 
 ON 
 	CF.CPF_usuario = U.CPF;
+    
+CREATE VIEW View_Animais_Disponiveis AS
+SELECT 
+A.id_animal,
+A.nome AS Nome_Animal,
+A.idade,
+A.especie,
+A.sexo,
+A.peso,
+A.descricao,
+A.deficiencia,
+A.doenca,
+A.data_registro,
+IF(A.ativo = 1, 'Disponível', 'Adotado') AS Status
+FROM Animal AS A WHERE 
+A.ativo = 1;  
+
+
+
