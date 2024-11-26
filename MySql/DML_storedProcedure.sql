@@ -1,7 +1,7 @@
 USE ong_database;
 
 -- Funções da tabela Usuario
-#Função de Inserir dados da tabela Usuario
+
 DELIMITER //
 CREATE PROCEDURE inserirUsuarios(
 	IN p_CPF CHAR(11),
@@ -19,7 +19,6 @@ BEGIN
 
 END //
 
-#Função update da tabela Usuario
 CREATE PROCEDURE desativarUsuarios(
 	IN p_CPF CHAR(11)
 )
@@ -27,7 +26,6 @@ BEGIN
 	UPDATE Usuario SET status_registro = 0 WHERE p_CPF = CPF;
 END//
 
-#Função delete da tabela Usuario
 CREATE PROCEDURE excluirUsuario(
 	IN p_CPF CHAR(11)
 )
@@ -37,7 +35,7 @@ END//
 DELIMITER ;
 
 -- Funções da tabela Animais
-# Função para Inserir dados na tabela Animal
+
 DELIMITER //
 CREATE PROCEDURE InserirAnimal (
     IN p_nome VARCHAR(15),
@@ -49,34 +47,29 @@ CREATE PROCEDURE InserirAnimal (
     IN p_deficiencia VARCHAR(15),
     IN p_doenca VARCHAR(15))
     
-    BEGIN
-    
-    INSERT INTO Animal ( nome, idade, sexo, peso, especie, descricao, deficiencia, doenca
-    ) VALUES (p_nome, p_idade, p_sexo, p_peso, p_especie, p_descricao, p_deficiencia, p_doenca);
-    END//
-    
-    # Função update da tabela Animal
-    CREATE PROCEDURE AtualizarAnimal (
+BEGIN
+    INSERT INTO Animal ( nome, idade, sexo, peso, especie, descricao, deficiencia, doenca) 
+    VALUES (p_nome, p_idade, p_sexo, p_peso, p_especie, p_descricao, p_deficiencia, p_doenca);
+END//
+
+CREATE PROCEDURE AtualizarAnimal (
     IN p_id INT,
     IN p_novo_nome VARCHAR (15)
-    )
-    BEGIN
+)
+BEGIN
     UPDATE Animal
     SET nome = p_novo_nome
     WHERE id = p_id;
-    END//
+END//
     
-    #Função delete da tabela Animal
-    CREATE PROCEDURE DeleterAnimal (
-    IN p_id INT)
-    BEGIN 
-    DELETE FROM Animal WHERE p_id = id;
-    END//
+CREATE PROCEDURE DeleterAnimal (
+	IN p_id INT)
+BEGIN 
+	DELETE FROM Animal WHERE p_id = id;
+END//
     DELIMITER ;
     
-    
 -- Funções da tabela Adocao
-# Função para Inserir dados na tabela Adocao
 DELIMITER //
 
 CREATE PROCEDURE InserirAdocao(
@@ -89,7 +82,6 @@ BEGIN
     VALUES (p_observacao, p_id_animal, p_CPF_usuario);
 END //
 
-	# Função update da tabela Adocao
 	CREATE PROCEDURE AtualizarAdocao(
     IN p_id INT,
     IN p_status CHAR(1),
@@ -102,8 +94,6 @@ END //
     WHERE id = p_id;
 END //
 
-
-	#Função delete da tabela Usuario
 	CREATE PROCEDURE ExcluirAdocao(
     IN p_id INT
 	)
@@ -112,9 +102,7 @@ END //
 END //
 DELIMITER ;
 
-
 -- Funções da tabela Contibuicao_financeira
-# Função para Inclusão de Contribuições
 
 DELIMITER //
 
@@ -128,8 +116,6 @@ BEGIN
     VALUES (p_Valor, p_CPF_usuario, p_id_metodoPagamento);
 END //
 
-#Função para Atualização de Contribuições
-
 CREATE PROCEDURE atualizarContribuicao (
     IN p_id INT,
     IN p_valor FLOAT
@@ -137,8 +123,6 @@ CREATE PROCEDURE atualizarContribuicao (
 BEGIN
     UPDATE Contribuicao_financeira SET valor = p_Valor WHERE id = p_id;
 END //
-
-# Função para Exclusão de Contribuições
 
 CREATE PROCEDURE excluirContribuicao (
     IN p_id INT
@@ -189,6 +173,49 @@ CREATE PROCEDURE DeletarDoacaoItem(
 )
 BEGIN
     DELETE FROM Doacao_Item WHERE id = p_id;
+END //
+
+DELIMITER ;
+
+-- Funções da tabela Contribuicao_recorrente
+
+DELIMITER //
+CREATE PROCEDURE InsertContribuicaoRecorrente (
+    IN p_valor_fixo FLOAT,
+    IN p_data_cobranca DATE,
+    IN p_frequencia VARCHAR(20),
+    IN p_CPF_usuario CHAR(11),
+    IN p_id_metodoPagamento INT
+)
+BEGIN
+    INSERT INTO Contribuicao_recorrente (valor_fixo, data_cobranca, frequencia, CPF_usuario, id_metodoPagamento)
+    VALUES (p_valor_fixo, p_data_cobranca, p_frequencia, p_CPF_usuario, p_id_metodoPagamento);
+END //
+
+CREATE PROCEDURE UpdateContribuicaoRecorrente (
+    IN p_id INT,
+    IN p_valor_fixo FLOAT,
+    IN p_data_cobranca DATE,
+    IN p_frequencia VARCHAR(20),
+    IN p_CPF_usuario CHAR(11),
+    IN p_id_metodoPagamento INT
+)
+BEGIN
+    UPDATE Contribuicao_recorrente
+    SET
+        valor_fixo = p_valor_fixo,
+        data_cobranca = p_data_cobranca,
+        frequencia = p_frequencia,
+        CPF_usuario = p_CPF_usuario,
+        id_metodoPagamento = p_id_metodoPagamento
+    WHERE id = p_id;
+END //
+
+CREATE PROCEDURE DeleteContribuicaoRecorrente (
+    IN p_id INT
+)
+BEGIN
+    DELETE FROM Contribuicao_recorrente WHERE id = p_id;
 END //
 
 DELIMITER ;
