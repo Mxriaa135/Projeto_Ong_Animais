@@ -18,32 +18,25 @@ INSERT INTO usuario(CPF, nome, sobrenome, email, senha, sexo, data_nascimento, t
 ('12345678901', 'João Henrique', 'Prado', 'joaoprado@email.com', 'senha123', 'M', '1980-08-10', '11999999999'),
 ('98765432100', 'Maria Clara', 'Ferreira Rodrigues', 'mariaferreira@email.com', 'senha456','F', '2005-09-21', '11988888888'),
 ('12345678910', 'Olavo', 'de Carvalho', 'olavodecarvalho@hotmail.com', 'olavo123', 'M', '1980-08-11', '11911234556'),
-('12345678801', 'Carlos', 'Silva Oliveira', 'carlos.silva@email.com', 'senha123', 'M', '1992-07-15', '11987654321');
-
-;
+('12345678801', 'Carlos', 'Silva Oliveira', 'carlos.silva@email.com', 'senha123', 'M', '1992-07-15', '11987654321'),
+('56781234567', 'Juliana', 'Martins Rocha', 'julianamartins@gmail.com', 'jmr12345', 'F', '1992-05-20', '11934567890'),
+('87654321098', 'Felipe', 'Costa Almeida', 'felipe.costa@email.com', 'felipe123', 'M', '1988-11-14', '11987654320');
 
 INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES 
 ('1', '52541088846'),
 ('1', '48783632105'),
-('5', '83274873465'),
-('3', '88728982984'),
-('6', '88728982984'),
-('4', '48783632105'),
-('5', '43591864307'),
-('3','43591864307'),
-('5','35748693883'),
-('6','35748693883'),
-('3', '48783632105'),
-('6', '43591864307'),
-('6', '36709925691'),
-('3', '53328174916'),
-('5', '58963578818'),
-('1', '98765432100'),
-('1','12345678910'),
-('5', '12345678801');
-;
-
-
+('2', '83274873465'),
+('2', '88728982984'),
+('2', '43591864307'),
+('2', '35748693883'),
+('2', '36709925691'),
+('2', '53328174916'),
+('2', '58963578818'),
+('2', '98765432100'),
+('2', '12345678910'),
+('2', '12345678801'),
+('2', '56781234567'),
+('2', '87654321098');
 
 INSERT INTO animal (nome, idade, sexo, peso, especie, descricao) VALUES 
 ('Pipoca', 14, 'M', 5.500, 'cachorro', 'Muito brincalhão'),
@@ -52,9 +45,11 @@ INSERT INTO animal (nome, idade, sexo, peso, especie, descricao) VALUES
 ('Snoopy', 20, 'M', 5.500, 'cachorro', 'Muito dócil e carinhoso' ),
 ('Atlas', 90, 'M', 9.289, 'gato', 'Velhinho e bem quietinho, mas ainda adora um carinho e colo'),
 ('Princesa', 108, 'F', 15.289, 'cachorro', 'Muito brincalhona e alegre, adora um carinho'),
-('Pipoco', 1, 'M', 5.0, 'gato', 'Muito esperto e carinhoso'), 
-('Neymar', 2, 'F', 5.289, 'gato', 'Muito carinhosa e amavel'),
-('Tutu', 4, 'M', 1.500, 'gato', 'Muito elétrico e "miante"');
+('Pipoco', 6, 'M', 5.0, 'gato', 'Muito esperto e carinhoso'), 
+('Neymar', 3, 'M', 5.289, 'gato', 'Muito carinhoso e amavel'),
+('Tutu', 4, 'M', 1.500, 'gato', 'Muito elétrico e "miante"'),
+('Hercules', 3, 'M', 1.400 , 'cachorro', 'muito animado e carinhoso'),
+('Pandora', 18, 'F', 5.000, 'gato', 'Desanimada e arisca, precisa de cuidados adequados' );
 
 INSERT INTO animal (nome, idade, sexo, peso, especie, descricao, deficiencia) VALUES
 ('Floquinho', 48, 'M', 9.387, 'gato', 'Bem tímido mas muito carinhoso', 'Surdo');
@@ -85,7 +80,9 @@ INSERT INTO doacao_item (nome_item, foto, CPF_usuario ) VALUES
 ('Shampoo para gatos', '', '12345678901'),
 ('Condicionador para gatos', '', '12345678901'),
 ('Agua', '', '12345678801'), 
-('Shampoo', '', '12345678910');
+('Shampoo', '', '12345678910'),
+('Brinquedo para cachorro', '', '56781234567'),
+('Coleira para gato', '', '87654321098');
 
 
 INSERT INTO Contribuicao_financeira (valor, CPF_usuario, id_metodoPagamento) VALUES
@@ -98,8 +95,8 @@ INSERT INTO Contribuicao_financeira (valor, CPF_usuario, id_metodoPagamento) VAL
 (50.00, '12345678901', '2'),
 (150.00, '98765432100', '4'),
 (25.00, '12345678801', 1), 
-(15.00, '12345678910', 2);  
-
+(15.00, '12345678910', 2),
+(100.00, '87654321098', 2); 
 
 INSERT INTO Contribuicao_recorrente (valor_fixo, frequencia, CPF_usuario, id_metodoPagamento) VALUES
 ('30.00', 'Mensalmente', '52541088846', 2),
@@ -109,9 +106,8 @@ INSERT INTO Contribuicao_recorrente (valor_fixo, frequencia, CPF_usuario, id_met
 ('80.00','Mensalmente', '58963578818', '1'),
 ('20.00', 'Mensalmente', '53328174916', '1'),
 ('100', 'Semestral', '12345678901', '2'),
-('300', 'Anual', '98765432100'),
+('300', 'Anual', '98765432100', 2),
 (40.00, 'Mensalmente', '12345678801', 2),  
-(50.00, 'Trimestral', '12345678910', 1); 
-
-;
+(50.00, 'Trimestral', '12345678910', 1),
+('60.00', 'Mensalmente', '87654321098', 3);
 
