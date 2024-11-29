@@ -14,6 +14,9 @@ CREATE TABLE Animal(
     ativo SMALLINT DEFAULT 1
 );
 
+CREATE INDEX idx_animal_ativo
+ON Animal(ativo);
+
 CREATE TABLE Usuario (
 	CPF CHAR(11) PRIMARY KEY,
 	nome VARCHAR(15) NOT NULL,
@@ -27,10 +30,19 @@ CREATE TABLE Usuario (
     ativo SMALLINT DEFAULT 1
 );
 
+CREATE INDEX idx_usuario_ativo
+ON Usuario(ativo);
+
 CREATE TABLE tipo_usuario (
 	id SMALLINT PRIMARY KEY AUTO_INCREMENT,
 	descricao VARCHAR(15) NOT NULL UNIQUE CHECK(descricao='Administrador' OR descricao='Usuario' OR
 	descricao='Voluntário' OR descricao='Doador' OR descricao='Adotante' OR descricao='Contribuinte')
+);
+
+CREATE TABLE Metodo_pagamento (
+	id SMALLINT PRIMARY KEY AUTO_INCREMENT,
+	descricao VARCHAR(25) NOT NULL UNIQUE CHECK(descricao='PIX' OR
+    descricao='Cartão de Crédito' OR descricao='Cartão de Débito' OR descricao='Boleto bancário')
 );
 
 CREATE TABLE usuario_tipo(
@@ -53,28 +65,28 @@ CREATE TABLE Adocao (
 	FOREIGN KEY (CPF_Usuario)REFERENCES Usuario (CPF)
 );
 
+CREATE INDEX idx_adocao_status
+ON adocao(status_adocao);
+
 CREATE TABLE  Doacao_Item (
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	nome_item VARCHAR (40),
 	foto VARCHAR(225) NOT NULL,
 	status_doacao CHAR(1) NULL CHECK(status_doacao='P' OR status_doacao='A' OR status_doacao='R')  DEFAULT 'P', 
-	observacao VARCHAR(100) NULL,
+	observacao VARCHAR(100) NULL DEFAULT 'Nenhuma',
 	data_solicitacao DATE DEFAULT (CURDATE()),
 	data_doacao DATE NULL,
 	CPF_usuario CHAR(11) NOT NULL,
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario (CPF)
 );
 
-CREATE TABLE Metodo_pagamento (
-	id SMALLINT PRIMARY KEY AUTO_INCREMENT, -- ATENCAO tipo smallint
-	descricao VARCHAR(25) NOT NULL UNIQUE CHECK(descricao='PIX' OR
-    descricao='Cartão de Crédito' OR descricao='Cartão de Débito' OR descricao='Boleto bancário')
-);
+CREATE INDEX idx_doacao_status
+ON doacao_item(status_doacao);
 
 CREATE TABLE Contribuicao_financeira(
 	id INT PRIMARY KEY AUTO_INCREMENT,
 	valor FLOAT NOT NULL CHECK(valor>2),
-	observacao VARCHAR(100) NULL,
+	observacao VARCHAR(100) NULL DEFAULT 'Nenhuma',
 	data_contribuicao DATE DEFAULT (CURDATE()),
 	CPF_usuario CHAR(11) NOT NULL,
 	id_metodoPagamento SMALLINT NOT NULL,
