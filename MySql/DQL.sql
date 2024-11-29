@@ -1,18 +1,17 @@
 USE ong_database;
 
 -- View criada por Maria
-CREATE VIEW adocao_dados_completos AS
+CREATE VIEW usuarios_ativos_tipos AS
 SELECT 
-	ad.status_adocao, 
-    ad.data_solicitacao, 
-    CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario, 
-    u.telefone, 
-    u.email, 
-    an.nome AS Nome_animal, 
-    an.especie
-FROM adocao AS ad
-JOIN usuario AS u ON ad.CPF_usuario = u.CPF
-JOIN animal AS an ON ad.id_animal = an.id_animal;
+	u.CPF,
+    CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario,
+    t.descricao
+FROM 
+	usuario AS u, tipo_usuario AS t, usuario_tipo AS ut
+WHERE
+	u.CPF = ut.CPF_usuario
+    AND ut.id_TipoUsuario = t.id
+    AND u.ativo = 1;
 
 -- View criada por Ana Lívia
 #Saber total arrecadado financeiro
