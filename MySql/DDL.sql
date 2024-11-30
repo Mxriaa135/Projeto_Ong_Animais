@@ -104,3 +104,86 @@ CREATE TABLE Contribuicao_recorrente(
 	FOREIGN KEY (CPF_usuario) REFERENCES Usuario(CPF),
 	FOREIGN KEY (id_metodoPagamento) REFERENCES Metodo_pagamento(id)
 );
+
+DELIMITER //
+CREATE TRIGGER usuario_novo_tipo
+AFTER INSERT ON Usuario
+FOR EACH ROW 
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1
+        FROM
+			usuario_tipo AS u
+		WHERE
+			u.id_tipoUsuario = '2' 
+			AND u.CPF_usuario = NEW.CPF
+		) THEN
+	INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES (2, NEW.CPF);
+    END IF;
+END//
+
+CREATE TRIGGER adotante_novo_tipo
+AFTER INSERT ON adocao
+FOR EACH ROW 
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1
+        FROM
+			usuario_tipo AS u
+		WHERE
+			u.id_tipoUsuario = '5' 
+			AND u.CPF_usuario = NEW.CPF_usuario
+		) THEN
+	INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES (5, NEW.CPF_usuario);
+    END IF;
+END//
+
+CREATE TRIGGER doador_noto_tipo
+AFTER INSERT ON doacao_item
+FOR EACH ROW 
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1
+		FROM
+			usuario_tipo AS u
+		WHERE
+			u.id_tipoUsuario = '3' 
+			AND u.CPF_usuario = NEW.CPF_usuario
+		) THEN
+		INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES (3, NEW.CPF_usuario);
+    END IF;
+END//
+
+CREATE TRIGGER contribuinte_novo_tipo
+AFTER INSERT ON Contribuicao_financeira
+FOR EACH ROW 
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1
+        FROM
+			usuario_tipo AS u
+		WHERE
+			u.id_tipoUsuario = '6' 
+			AND u.CPF_usuario = NEW.CPF_usuario
+		) THEN
+	INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES (6, NEW.CPF_usuario);
+    END IF;
+END//
+
+CREATE TRIGGER contribuinte_recorrente_novo_tipo
+AFTER INSERT ON Contribuicao_recorrente
+FOR EACH ROW 
+BEGIN
+	IF NOT EXISTS (
+		SELECT 1
+        FROM
+			usuario_tipo AS u
+		WHERE
+			u.id_tipoUsuario = '6' 
+			AND u.CPF_usuario = NEW.CPF_usuario
+		) THEN
+	INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES (6, NEW.CPF_usuario);
+    END IF;
+END//
+DELIMITER ;
+
