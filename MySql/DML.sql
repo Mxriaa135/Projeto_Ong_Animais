@@ -25,18 +25,9 @@ INSERT INTO usuario(CPF, nome, sobrenome, email, senha, sexo, data_nascimento, t
 INSERT INTO usuario_tipo (id_TipoUsuario, CPF_usuario) VALUES 
 ('1', '52541088846'),
 ('1', '48783632105'),
-('2', '83274873465'),
-('2', '88728982984'),
-('2', '43591864307'),
-('2', '35748693883'),
-('2', '36709925691'),
-('2', '53328174916'),
-('2', '58963578818'),
+('4', '58963578818'),
 ('1', '98765432100'),
-('2', '12345678910'),
-('2', '12345678801'),
-('2', '56781234567'),
-('2', '87654321098');
+('4', '56781234567');
 
 INSERT INTO animal (nome, idade, sexo, peso, especie, descricao) VALUES 
 ('Pipoca', 14, 'M', 5.500, 'cachorro', 'Muito brincalhão'),
@@ -84,7 +75,6 @@ INSERT INTO doacao_item (nome_item, foto, CPF_usuario ) VALUES
 ('Brinquedo para cachorro', '', '56781234567'),
 ('Coleira para gato', '', '87654321098');
 
-
 INSERT INTO Contribuicao_financeira (valor, CPF_usuario, id_metodoPagamento) VALUES
 (5.00, '52541088846', 1),
 (10.00, '88728982984', 1),
@@ -96,7 +86,7 @@ INSERT INTO Contribuicao_financeira (valor, CPF_usuario, id_metodoPagamento) VAL
 (150.00, '98765432100', '4'),
 (25.00, '12345678801', 1), 
 (15.00, '12345678910', 2),
-(100.00, '87654321098', 2); 
+(100.00, '87654321098', 2);
 
 INSERT INTO Contribuicao_recorrente (valor_fixo, frequencia, CPF_usuario, id_metodoPagamento) VALUES
 ('30.00', 'Mensalmente', '52541088846', 2),
@@ -110,4 +100,5 @@ INSERT INTO Contribuicao_recorrente (valor_fixo, frequencia, CPF_usuario, id_met
 (40.00, 'Mensalmente', '12345678801', 2),  
 (50.00, 'Trimestral', '12345678910', 1),
 ('60.00', 'Mensalmente', '87654321098', 3);
+
 
