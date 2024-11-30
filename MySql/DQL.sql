@@ -1,7 +1,7 @@
 USE ong_database;
 
 -- View criada por Maria
-CREATE VIEW usuarios_ativos_tipos AS
+CREATE VIEW View_usuarios_ativos_tipos AS
 SELECT 
 	u.CPF,
     CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario,
@@ -11,11 +11,12 @@ FROM
 WHERE
 	u.CPF = ut.CPF_usuario
     AND ut.id_TipoUsuario = t.id
-    AND u.ativo = 1;
+    AND u.ativo = 1
+ORDER BY 
+	u.CPF;
 
 -- View criada por Ana Lívia
-#Saber total arrecadado financeiro
-CREATE VIEW contribuicoes_ONG as
+CREATE VIEW View_contribuicoes_ONG as
 SELECT 
 	U.CPF AS CPF,
     CR.id AS id_recorrente, 
@@ -58,44 +59,47 @@ SELECT
     U.Email,
     CF.Valor,
     CF.Data_Contribuicao,
-    CF.id_metodoPagamento
+    M.descricao AS metodo_pagamento
 FROM 
-    Contribuicao_financeira AS CF, Usuario AS U
+    Contribuicao_financeira AS CF, Usuario AS U, metodo_pagamento AS M
 WHERE 
-	CF.CPF_usuario = U.CPF;
-    
--- View criada por Nicoly    
-CREATE VIEW View_Animais_Disponiveis AS
-SELECT 
-A.id_animal,
-A.nome AS Nome_Animal,
-A.idade,
-A.especie,
-A.sexo,
-A.peso,
-A.descricao,
-A.deficiencia,
-A.doenca,
-A.data_registro,
-IF(A.ativo = 1, 'Disponível', 'Adotado') AS Status
-FROM Animal AS A WHERE 
-A.ativo = 1;  
+	CF.CPF_usuario = U.CPF
+    AND CF.id_metodoPagamento = M.id;
 
 -- View criada por Gabriel
-CREATE VIEW ContribuicaoRecorrenteUsuarioTipo AS
+CREATE VIEW View_ContribuicaoRecorrenteUsuarioTipo AS
 SELECT 
     cr.id AS id_contribuicao,
     CONCAT(u.nome, ' ', u.sobrenome) AS nome_completo_usuario, 
     cr.valor_fixo,
     cr.frequencia,
     cr.data_cobranca,
-    t.descricao AS tipo_usuario
+    m.descricao AS Metodo_pagamento
 FROM 
     Contribuicao_recorrente cr, 
-    Usuario U, 
-    tipo_usuario t, 
-    usuario_tipo ut
+    Usuario u, 
+    Metodo_pagamento M
 WHERE 
 	cr.CPF_usuario = u.CPF 
-	AND u.CPF = ut.CPF_usuario
-    AND ut.id_TipoUsuario = t.id;
+	AND cr.id_metodoPagamento = m.id;
+
+-- View criada por Nicoly
+CREATE VIEW View_Usuario_Doacao_Item AS
+SELECT 
+    u.CPF,
+    u.nome AS nome_usuario,
+    u.sobrenome AS sobrenome_usuario,
+    u.email AS email_usuario,
+    u.telefone AS telefone_usuario,
+    d.nome_item AS item_doado
+FROM 
+    Usuario u, Doacao_item d
+WHERE 
+	d.CPF_usuario = u.CPF;
+
+-- SELECT * FROM View_Usuarios_ativos_tipos;
+-- SELECT * FROM View_contribuicoes_ONG;
+-- SELECT * FROM View_Adocao;
+-- SELECT * FROM View_Contribuicoes;
+-- SELECT * FROM View_ContribuicaoRecorrenteUsuarioTipo;
+-- SELECT * FROM View_Usuario_Doacao_Item;
