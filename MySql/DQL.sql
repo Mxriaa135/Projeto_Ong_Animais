@@ -31,8 +31,8 @@ FROM
     usuario as U
 WHERE u.CPF = CR.cpf_usuario 
 	AND u.CPF = CF.CPF_usuario
-	AND DATE (data_contribuicao) BETWEEN  '2024-11-01' AND '2024-11-30' 
-	AND DATE (data_cobranca) BETWEEN '2024-11-01' AND '2024-11-30';
+	AND DATE (data_contribuicao) BETWEEN  '2024-12-01' AND '2024-12-31' 
+	AND DATE (data_cobranca) BETWEEN '2024-12-01' AND '2024-12-31';
  
  -- View criada por Cristane
 CREATE VIEW View_Adocao AS
